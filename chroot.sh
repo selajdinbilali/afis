@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#    -- change root
-arch-chroot /mnt /bin/bash
-    
+
+arch-chroot chroot.sh
+
 #    -- time
 ln -s /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 hwclock --systohc

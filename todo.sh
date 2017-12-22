@@ -35,3 +35,6 @@ pacstrap -i /mnt base base-devel
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cp chroot.sh /mnt/chroot.sh
+
+#    -- change root
+arch-chroot /mnt /bin/bash
