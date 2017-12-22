@@ -1,4 +1,4 @@
-    
+#!/bin/bash    
 #    -- if no ping (troubleshoot)
 #    -- WIRED
     # systemctl stop dhcpcd@<TAB>
@@ -25,7 +25,7 @@ parted --script /dev/sda \
     
     
 #    -- mount
-mount /dev/sda1 /mnt // le root
+mount /dev/sda1 /mnt
     
 #    -- install the system
 pacstrap -i /mnt base base-devel
