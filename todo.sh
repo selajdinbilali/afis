@@ -15,7 +15,7 @@
     
     
  #   -- Update sys clock
- timedatectl set-ntp true
+timedatectl set-ntp true
     
 # partitioning    
 parted --script /dev/sda \
@@ -23,7 +23,7 @@ parted --script /dev/sda \
        mkpart primary ext4 1MiB 100% \
        set 1 boot on
     
-    
+mkfs.ext4 /dev/sda1    
 #    -- mount
 mount /dev/sda1 /mnt
     
