@@ -1,3 +1,3 @@
 #!/bin/bash
 sh ./keyboardandfont.sh   
-sh ./secondpart.sh 
+sh ./todo.sh 
