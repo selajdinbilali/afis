@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-sh ./chroot.sh
-
 #    -- time
 ln -s /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 hwclock --systohc
@@ -34,6 +31,7 @@ passwd
 pacman -S grub os-prober
 grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
-    
+
+echo "launch afterinstall.sh"
 exit
 
