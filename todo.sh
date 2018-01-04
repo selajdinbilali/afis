@@ -12,7 +12,9 @@
     # iw dev NOM scan | grep SSID
     # wpa_supplicant -B -i NOM -c <(wpa-passphrase "ssid" "psk")
     # dhcpcd NOM
-    
+
+pacman -Sy git --noconfirm
+git clone git@github.com:selajdinbilali/afis.git
     
  #   -- Update sys clock
 timedatectl set-ntp true
