@@ -32,6 +32,6 @@ grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
-printf "first part finished\nreboot, login as root\ninstall git, clone the repo, cd to it, launch afterinstall.sh"
+printf "first part finished\nreboot, login as root\ninstall git, clone the repo, cd to it, launch 03script.sh"
 exit
 
