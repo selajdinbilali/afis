@@ -41,5 +41,5 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cp chroot.sh /mnt/chroot.sh
 cp locale.gen /mnt/locale.gen
 #    -- change root
-echo "vous etes en chroot lancer 03script.sh"
+echo "you are in chroot launch 03script.sh to continue"
 arch-chroot /mnt /bin/bash
