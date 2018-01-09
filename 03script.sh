@@ -7,7 +7,8 @@ passwd beorn
 #-- install sudo
 pacman -Syu sudo --noconfirm
 mv sudoers /etc/sudoers
-
+cp -R /root/afis /home/beorn/afis
+rm -R /root/afis
 echo "relogin as beorn"
 exit
 
@@ -17,7 +18,7 @@ sudo pacman -S alsa-utils --noconfirm
 amixer sset Master unmute
 
 #-- base de xorg
-sudo pacman -S xorg-server xorg-xinit xterm urxvt-unicode mesa
+sudo pacman -S xorg-server xorg-xinit xterm rxvt-unicode mesa --noconfirm
 
 #-- drivers video
 #$ lspci | grep VGA
@@ -36,17 +37,4 @@ sudo pacman -S xorg-twm xorg-xclock --noconfirm
 #-- environnement de bureau
 sudo pacman -S i3 dmenu --noconfirm
 
-
 #copy config of i3 in ~/.config/i3/config from github
-
-#-- basic system things to add
-#- fonts
-#- yaourt for aur packages
-#- emacs
-#- firefox
-#- xfce4-terminal
-#- thunar
-#- vlc
-#- torrent client
-#- libre-offfice
-#- git
