@@ -32,6 +32,11 @@ grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
+-- wired
+INTERFACE=$(ip link | grep 2: | cut -d ":" -f 2 | cut -c 2-)
+systemctl enable dhcpcd@$INTERFACE.service
+
+
 printf "first part finished\nreboot, login as root\ninstall git, clone the repo, cd to it, launch 03script.sh"
 exit
 
