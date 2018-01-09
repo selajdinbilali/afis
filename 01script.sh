@@ -38,7 +38,7 @@ pacstrap /mnt base
 #    -- create a fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp 02script.sh /mnt/chroot.sh
+cp 02script.sh /mnt/02script.sh
 cp locale.gen /mnt/locale.gen
 #    -- change root
 echo "you are in chroot launch 02script.sh to continue"
