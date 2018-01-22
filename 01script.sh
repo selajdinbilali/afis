@@ -32,7 +32,7 @@ mount /dev/sda1 /mnt
 
     
 #    -- install the system
-pacstrap /mnt base
+pacstrap /mnt base base-devel
     
     
 #    -- create a fstab
