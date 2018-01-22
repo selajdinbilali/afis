@@ -20,8 +20,10 @@ sudo pacman -S xorg-twm xorg-xclock --noconfirm
 #startx
 
 #-- copy xinitrc and edit from github
+printf "setxkbmap fr bepo\nexec i3" > .xinitrc
 
 #-- environnement de bureau
 sudo pacman -S i3 dmenu --noconfirm
+
 
 #copy config of i3 in ~/.config/i3/config from github
