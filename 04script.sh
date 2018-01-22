@@ -1,4 +1,6 @@
- #-- son
+#!/bin/bash
+
+#-- son
 sudo pacman -S alsa-utils --noconfirm
 amixer sset Master unmute
 
