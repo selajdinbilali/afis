@@ -5,7 +5,7 @@ sudo pacman -S alsa-utils --noconfirm
 amixer sset Master unmute
 
 #-- base de xorg
-sudo pacman -S xorg-server xorg-xinit xterm rxvt-unicode mesa --noconfirm
+sudo pacman -S xorg-server xorg-xinit xterm mesa --noconfirm
 
 #-- drivers video
 #$ lspci | grep VGA
@@ -23,7 +23,11 @@ sudo pacman -S xorg-twm xorg-xclock --noconfirm
 printf "setxkbmap fr bepo\nexec i3" > .xinitrc
 
 #-- environnement de bureau
-sudo pacman -S i3 dmenu --noconfirm
+sudo pacman -S i3 dmenu termite emacs firefox-developer-edition --noconfirm
+
+mkdir ~/.config/i3
+cp i3/config ~/.config/i3/config
+
 
 
 #copy config of i3 in ~/.config/i3/config from github
