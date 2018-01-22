@@ -19,15 +19,21 @@ sudo pacman -S xf86-video-vesa --noconfirm
 sudo pacman -S xorg-twm xorg-xclock --noconfirm
 #startx
 
-#-- copy xinitrc and edit from github
-printf "setxkbmap fr bepo\nexec i3" > .xinitrc
+
 
 #-- environnement de bureau
 sudo pacman -S i3 dmenu termite emacs firefox-developer-edition --noconfirm
 
-mkdir ~/.config/i3
-cp i3/config ~/.config/i3/config
+# download dotfiles, install mkrc
+# maybe create the folders
 
+
+#-- copy xinitrc and edit from github
+#printf "setxkbmap fr bepo\nexec i3" > ~/.xinitrc
+#mkdir -p ~/.config/i3
+#cp i3/config ~/.config/i3/config
+#mkdir ~/.config/termite
+#cp termite/config ~/.config/termite/config
 
 
 #copy config of i3 in ~/.config/i3/config from github
