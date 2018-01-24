@@ -29,11 +29,9 @@ sudo pacman -S i3 dmenu termite emacs firefox-developer-edition --noconfirm
 
 
 #-- copy xinitrc and edit from github
-#printf "setxkbmap fr bepo\nexec i3" > ~/.xinitrc
-#mkdir -p ~/.config/i3
-#cp i3/config ~/.config/i3/config
+touch .xinitrc
+printf "setxkbmap fr bepo\nexec i3" > ~/.xinitrc
+mkdir -p ~/.config/i3
+cp i3/config ~/.config/i3/config
 #mkdir ~/.config/termite
 #cp termite/config ~/.config/termite/config
-
-
-#copy config of i3 in ~/.config/i3/config from github
