@@ -2,13 +2,15 @@
 - loadkeys fr-bepo
 - mount -o remount,size=2G /run/archiso/cowspace
 - install git and clone the repo and go to folder
-- pacman -S git
+- pacman -Sy git
 - git clone https://github.com/selajdinbilali/afis.git
 - cd afis
-- sh ./01script.sh
+- chmod +x *.sh
+- ./01script.sh
 
 # after reboot
-- pacman -S git
+- pacman -Sy git
 - git clone https://github.com/selajdinbilali/afis.git
 - cd afis
-- sh ./03script.sh
+- chmod +x *.sh
+- ./03script.sh
