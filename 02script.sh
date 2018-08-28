@@ -25,7 +25,10 @@ mkinitcpio -p linux
 echo "type the root password"
 passwd
     
-    
+# wifi
+pacman -S wpa_supplicant --noconfirm
+pacman -S dialog --noconfirm
+
 # grub and os-prober
 pacman -S grub os-prober --noconfirm
 grub-install --target=i386-pc /dev/sda
