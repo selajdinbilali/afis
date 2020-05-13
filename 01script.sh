@@ -1,35 +1,22 @@
 #!/bin/bash    
-#    -- if no ping (troubleshoot)
-#    -- WIRED
-    # systemctl stop dhcpcd@<TAB>
-    
- #   -- WIFI
- #   -- take the NAME given by iw dev or ip link
-    # iw dev
-    # ip link set NAME up
- #   wifi-menu NAME
- #   -- if doesnt work try this
-    # iw dev NOM scan | grep SSID
-    # wpa_supplicant -B -i NOM -c <(wpa-passphrase "ssid" "psk")
-    # dhcpcd NOM
+
 
  #   -- Update sys clock
 timedatectl set-ntp true
     
 # partitioning    
 parted --script /dev/sda \
-       mklabel msdos \
-       mkpart primary ext4 1MiB 100% \
-       set 1 boot on
+       mklabel gpt \
+       mkpart primary 1MiB 300MiB \
+       mkpart primary 300MiB 1300MiB \
+       mkpart primary 1300MiB 100%
     
-mkfs.ext4 /dev/sda1    
+mkfs.fat -F32 /dev/sda1
+mkfs.swap /dev/sda2
+mkfs.ext4 /dev/sda3
 #    -- mount
-mount /dev/sda1 /mnt
-
-#cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-#sed -s 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
-#rankmirrors -n 10 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
-
+mount /dev/sda3 /mnt
+swapon /dev/sda2
     
 #    -- install the system
 pacstrap /mnt base base-devel
