@@ -39,6 +39,7 @@ pacman -S grub efibootmgr dosfstools os-prober mtools dhcpcd
 mkdir /boot/EFI
 mount /dev/sda1 /boot/EFI  #Mount FAT32 EFI partition 
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
 
 #-- wired
 INTERFACE=$(ip link | grep 2: | cut -d ":" -f 2 | cut -c 2-)
