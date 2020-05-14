@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #-- son
-sudo pacman -S alsa-utils --noconfirm
-amixer sset Master unmute
+#sudo pacman -S alsa-utils --noconfirm
+#amixer sset Master unmute
 
 #-- base de xorg
 sudo pacman -S xorg-server xorg-xinit xterm mesa --noconfirm
@@ -22,7 +22,7 @@ sudo pacman -S xorg-twm xorg-xclock --noconfirm
 
 
 #-- environnement de bureau
-sudo pacman -S i3 dmenu termite emacs firefox-developer-edition --noconfirm
+sudo pacman -S i3 dmenu --noconfirm
 
 # download dotfiles, install mkrc
 # maybe create the folders
