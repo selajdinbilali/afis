@@ -28,8 +28,12 @@ pacstrap /mnt base base-devel linux linux-firmware
 #    -- create a fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-#    -- change root
-arch-chroot /mnt /bin/bash
+# copy the second script
+cp archchroot.bash /mnt/archchroot.sh
+
+
+# change root
+arch-chroot /mnt ./archchroot.sh
 
 ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 hwclock --systohc
@@ -41,7 +45,7 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 printf "KEYMAP=fr-bepo" >> /etc/vconsole.conf
 printf "aragorn" >> /etc/hostname
 
-pacman -S networkmanager --no-confirm
+pacman -S networkmanager --noconfirm
 systemctl enable NetworkManager
 echo "type root passwd"
 passwd
@@ -52,9 +56,6 @@ pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
-#-- wired
-INTERFACE=$(ip link | grep 2: | cut -d ":" -f 2 | cut -c 2-)
-systemctl enable dhcpcd@$INTERFACE.service
 
 echo "add sudo user after reboot, and install desktop"
 echo "type umount -a and reboot"
