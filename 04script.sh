@@ -22,7 +22,7 @@ sudo pacman -S xorg-twm xorg-xclock --noconfirm
 
 
 #-- environnement de bureau
-sudo pacman -S i3 dmenu --noconfirm
+sudo pacman -S i3 dmenu xfce4-terminal --noconfirm
 
 # download dotfiles, install mkrc
 # maybe create the folders
