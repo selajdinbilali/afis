@@ -29,7 +29,7 @@ pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # copy the second script
-cp archchroot.bash /mnt/archchroot.sh
+cp archchroot.sh /mnt/archchroot.sh
 
 
 # change root
