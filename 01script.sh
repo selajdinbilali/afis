@@ -36,3 +36,13 @@ hwclock --systohc
 
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+#    -- bepo layout for the console
+printf "KEYMAP=fr-bepo" >> /etc/vconsole.conf
+printf "aragorn" >> /etc/hostname
+
+pacman -S networkmanager --no-confirm
+systemctl enable NetworkManager
+echo "type root passwd"
+passwd
+
