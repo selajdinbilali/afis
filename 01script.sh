@@ -7,26 +7,32 @@ timedatectl set-ntp true
 # partitioning    
 parted --script /dev/sda \
        mklabel gpt \
-       mkpart primary 1MiB 300MiB \
-       mkpart primary 300MiB 1300MiB \
-       mkpart primary 1300MiB 100%
+       mkpart primary 1MiB 500MiB \
+       mkpart primary 500MiB 1500MiB \
+       mkpart primary 1500MiB 100%
     
 mkfs.fat -F32 /dev/sda1
-mkfs.swap /dev/sda2
+mkswap /dev/sda2
+swapon /dev/sda2
 mkfs.ext4 /dev/sda3
 #    -- mount
 mount /dev/sda3 /mnt
-swapon /dev/sda2
-    
+
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+
 #    -- install the system
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel linux linux-firmware
     
     
 #    -- create a fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp 02script.sh /mnt/02script.sh
-cp locale.gen /mnt/locale.gen
 #    -- change root
-echo "you are in chroot launch 02script.sh to continue"
 arch-chroot /mnt /bin/bash
+
+ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+hwclock --systohc
+
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
