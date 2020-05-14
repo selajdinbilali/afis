@@ -4,8 +4,8 @@
 printf "aragorn" >> /etc/hostname
 
 #    -- time
-ln -s /usr/share/zoneinfo/Europe/Zurich /etc/localtime
-hwclock --systohc
+ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
+hwclock --systohc --utc
     
 #    -- locale (langue du sys)
 mv locale.gen /etc/locale.gen
@@ -26,16 +26,21 @@ echo "type the root password"
 passwd
     
 # wifi
-pacman -S wpa_supplicant --noconfirm
-pacman -S dialog --noconfirm
+#pacman -S wpa_supplicant --noconfirm
+#pacman -S dialog --noconfirm
 
 # grub and os-prober
-pacman -S grub os-prober --noconfirm
-grub-install --target=i386-pc /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+#pacman -S grub os-prober --noconfirm
+#grub-install --target=i386-pc /dev/sda
+#grub-mkconfig -o /boot/grub/grub.cfg
 
+# efi version
+pacman -S grub efibootmgr dosfstools os-prober mtools dhcpcd
+mkdir /boot/EFI
+mount /dev/sda1 /boot/EFI  #Mount FAT32 EFI partition 
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 
--- wired
+#-- wired
 INTERFACE=$(ip link | grep 2: | cut -d ":" -f 2 | cut -c 2-)
 systemctl enable dhcpcd@$INTERFACE.service
 
