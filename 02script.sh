@@ -1,15 +1,12 @@
 #!/bin/bash
 
+#-- add user
+useradd -m -g users -s /bin/bash beorn
 
-# efi version
-pacman -S grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot
-grub-mkconfig -o /boot/grub/grub.cfg
+echo "type your password"
+passwd beorn
 
-#-- wired
-INTERFACE=$(ip link | grep 2: | cut -d ":" -f 2 | cut -c 2-)
-systemctl enable dhcpcd@$INTERFACE.service
-
-echo "type umount -a and reboot"
-exit
-
+#-- install sudo
+pacman -Syu sudo --noconfirm
+usermod -aG wheel beorn
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
