@@ -11,6 +11,4 @@ pacman -Syu sudo --noconfirm
 usermod -aG wheel beorn
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
-#-- base de xorg
-pacman -S xorg-server xorg-apps mesa xorg-xinit --noconfirm
-pacman -S xf86-video-vmware --noconfirm
+pacman -S xorg-apps mesa xorg-xinit xf86-video-vmware xorg-server xterm mesa xf86-video-vesa xorg-twm xorg-xclock i3 dmenu emacs --noconfirm
